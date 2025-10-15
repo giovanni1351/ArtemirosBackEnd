@@ -1,3 +1,9 @@
-from schemas.user import User, UserCreate
+from schemas.atividade import Atividade
+from schemas.levels import Level
+from schemas.token import TokenData
 
-__all__ = ["User", "UserCreate"]
+__all__ = [
+    "Atividade",
+    "Level",
+    "TokenData",
+]
