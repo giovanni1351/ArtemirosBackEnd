@@ -1,4 +1,5 @@
 from datetime import datetime
+from uuid import UUID
 
 from sqlmodel import (  # pyright: ignore[reportUnknownVariableType]
     Field,  # pyright: ignore[reportUnknownVariableType]
@@ -12,7 +13,7 @@ from schemas.token import TokenData
 
 class AtividadeCreate(SQLModel):
     id_level: int = Field(foreign_key="level.id")
-    id_token: int = Field(foreign_key="tokendata.id")
+    id_token: UUID = Field(foreign_key="tokendata.id")
     atividade: str
 
 

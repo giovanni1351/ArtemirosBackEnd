@@ -1,8 +1,8 @@
-"""empty message
+"""Atualizando o tipo do dado da tabela de atividades
 
-Revision ID: 809e1f8d0824
+Revision ID: 68a43f7a9b1a
 Revises: 
-Create Date: 2025-10-16 15:22:34.608364
+Create Date: 2025-10-16 16:02:53.801108
 
 """
 from typing import Sequence, Union
@@ -13,7 +13,7 @@ import sqlmodel
 
 
 # revision identifiers, used by Alembic.
-revision: str = '809e1f8d0824'
+revision: str = '68a43f7a9b1a'
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -36,7 +36,7 @@ def upgrade() -> None:
     )
     op.create_table('atividade',
     sa.Column('id_level', sa.Integer(), nullable=False),
-    sa.Column('id_token', sa.Integer(), nullable=False),
+    sa.Column('id_token', sa.Uuid(), nullable=False),
     sa.Column('atividade', sqlmodel.sql.sqltypes.AutoString(), nullable=False),
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),

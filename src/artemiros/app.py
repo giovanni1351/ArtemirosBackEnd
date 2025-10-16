@@ -2,12 +2,13 @@ from typing import Any, Literal
 
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
-from routes import levels, token
+from routes import atividade, levels, token
 from uvicorn import run
 
 app = FastAPI()
 app.include_router(token.router)
 app.include_router(levels.router)
+app.include_router(atividade.router)
 
 
 def custom_openapi() -> dict[str, Any]:
@@ -15,7 +16,7 @@ def custom_openapi() -> dict[str, Any]:
         return app.openapi_schema
     openapi_schema: dict[str, Any] = get_openapi(
         title="Artemiro BACKEND",
-        version="0.0.1",
+        version="0.0.5",
         summary="Sistema de monitoramento dos jogadores",
         description="O acesso desta api é para jogadores",
         routes=app.routes,
