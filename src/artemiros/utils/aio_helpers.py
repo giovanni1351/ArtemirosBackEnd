@@ -7,9 +7,12 @@ from fastapi import HTTPException, status
 from settings import LOGGER
 from sqlmodel import SQLModel, select
 
+from utils.logger_decorator import async_log_and_check_error
+
 # Decorator para logar o retorno da função e verificar se ocorreu algum erro
 
 
+@async_log_and_check_error
 async def create_item[T: SQLModel](
     session: AsyncSession, model: type[T], data: dict[str, Any]
 ) -> T:
@@ -26,6 +29,7 @@ async def create_item[T: SQLModel](
     return item
 
 
+@async_log_and_check_error
 async def get_item_or_404[T](
     session: AsyncSession, model: type[T], item_id: object
 ) -> T:
@@ -40,6 +44,7 @@ async def get_item_or_404[T](
     return item
 
 
+@async_log_and_check_error
 async def update_item[T](
     session: AsyncSessionDep, model: type[T], data: dict[str, object]
 ) -> T:
@@ -52,6 +57,7 @@ async def update_item[T](
     return item
 
 
+@async_log_and_check_error
 async def get_all_items[T](
     session: AsyncSession,
     model: type[T],
@@ -68,6 +74,7 @@ async def get_all_items[T](
         raise e from e
 
 
+@async_log_and_check_error
 async def delete_item[T](
     session: AsyncSession, model: type[T], item_id: object
 ) -> None:
@@ -82,6 +89,7 @@ async def delete_item[T](
     await session.commit()
 
 
+@async_log_and_check_error
 async def soft_delete_item[T](
     session: AsyncSession, model: type[SQLModel], item_id: object
 ) -> None:
@@ -97,6 +105,7 @@ async def soft_delete_item[T](
     await session.commit()
 
 
+@async_log_and_check_error
 async def get_all_itens_by_in_clause[T](
     session: AsyncSession, model: type[T], column: str, ids: list[int]
 ) -> Sequence[T]:
@@ -107,6 +116,7 @@ async def get_all_itens_by_in_clause[T](
     return result.all()
 
 
+@async_log_and_check_error
 async def remove_item_from_link_table[T](
     session: AsyncSession, model: type[T], item_ids: list[int | str]
 ) -> T | None:
