@@ -39,7 +39,7 @@ exclude = [
 ]
 venv = ".venv"
 venvPath = "."
-executionEnvironments = [{ root = "src" }]
+executionEnvironments = [{ root = "src/artemiros" }]
 
 [tool.ruff]
 line-length = 88
