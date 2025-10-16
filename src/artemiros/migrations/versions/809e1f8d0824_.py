@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: a28fff3c6d05
+Revision ID: 809e1f8d0824
 Revises: 
-Create Date: 2025-10-15 16:54:27.535732
+Create Date: 2025-10-16 15:22:34.608364
 
 """
 from typing import Sequence, Union
@@ -13,7 +13,7 @@ import sqlmodel
 
 
 # revision identifiers, used by Alembic.
-revision: str = 'a28fff3c6d05'
+revision: str = '809e1f8d0824'
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -29,7 +29,7 @@ def upgrade() -> None:
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('tokendata',
-    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('id', sa.Uuid(), nullable=False),
     sa.Column('momento_abertura', sa.DateTime(), nullable=False),
     sa.Column('momento_fechamento', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')

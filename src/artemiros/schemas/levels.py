@@ -17,6 +17,11 @@ class LevelCreate(SQLModel):
     nome_level: str
 
 
+class LevelUpdate(SQLModel):
+    id: int
+    nome_level: str
+
+
 class Level(LevelCreate, table=True):
     id: int = Field(primary_key=True)
     created_at: datetime = Field(default_factory=datetime.now)

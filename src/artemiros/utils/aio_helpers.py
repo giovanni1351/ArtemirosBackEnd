@@ -52,7 +52,7 @@ async def update_item[T](
     return item
 
 
-async def get_all_items[T, **P](
+async def get_all_items[T](
     session: AsyncSession,
     model: type[T],
     **kwargs: object,
