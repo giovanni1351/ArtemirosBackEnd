@@ -3,7 +3,7 @@ name = "artemirosbackend"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
     "aiosqlite>=0.21.0",
     "alembic>=1.17.0",
@@ -22,7 +22,7 @@ dependencies = [
 
 [tool.pyright]
 typeCheckingMode = "strict"
-pythonVersion = "3.13"
+pythonVersion = "3.12"
 include = ["src", 'tests']
 exclude = [
     "**/venv",
