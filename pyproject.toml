@@ -14,16 +14,11 @@ dependencies = [
     "pwdlib[argon2]>=0.2.1",
     "pydantic-settings>=2.11.0",
     "pyjwt>=2.10.1",
-    "pylogkit",
     "python-multipart>=0.0.20",
     "sqlmodel>=0.0.27",
     "tzdata>=2025.2",
     "uvicorn>=0.37.0",
 ]
-
-
-[tool.uv.sources]
-pylogkit = { git = "https://github.com/luizomf/pylogkit" }
 
 [tool.pyright]
 typeCheckingMode = "strict"

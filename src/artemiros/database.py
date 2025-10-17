@@ -17,13 +17,14 @@ def generate_connection_string() -> str:
 
 
 async_engine: AsyncEngine = create_async_engine(
-    generate_connection_string(),
-    pool_recycle=450,
+    generate_connection_string(), pool_recycle=30
 )
 
 
 async def get_async_session():  # noqa: ANN201
-    LOGGER.debug(f"Getting async session to  {SETTINGS.DB_DATABASE=}")
+    LOGGER.debug(
+        f"Getting async session to  {SETTINGS.DB_DATABASE=} {generate_connection_string()}"
+    )
     async with AsyncSession(async_engine, expire_on_commit=False) as session:
         yield session
 

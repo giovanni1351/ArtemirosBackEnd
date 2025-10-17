@@ -1,5 +1,6 @@
+import logging
+
 from pydantic_settings import BaseSettings
-from pylogkit import get_logger
 
 
 class Settings(BaseSettings):
@@ -17,4 +18,4 @@ class Settings(BaseSettings):
 
 SETTINGS = Settings()  # pyright: ignore[reportCallIssue]
 
-LOGGER = get_logger("mylogger", level=SETTINGS.LOG_LEVEL)  # pyright: ignore[reportArgumentType]
+LOGGER = logging.getLogger()
