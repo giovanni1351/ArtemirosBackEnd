@@ -1,7 +1,27 @@
 {
-  "functions": {
-    "src/artemiros/**": {
-      "excludeFiles": "{.next,.git,node_modules}/**"
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/artemiros/app.py",
+      "use": "@vercel/python",
+      "config": {
+        // Tenta adicionar a pasta pai da sua aplicação ao PYTHONPATH.
+        // O Vercel pode interpretar o "src" como o root do código Python.
+        // Isso é uma tentativa de solução sem mudar o código Python.
+        "runtime": "python3.12"
+        // Não há uma opção "pythonpath" direta, então dependemos de como o Vercel
+        // trata o root do build.
+      }
     }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/artemiros/app.py"
+    }
+  ],
+  "build": {
+    // Comando de build customizado para forçar o PYTHONPATH, se necessário.
+    // Isso pode ser complexo, pois o Vercel executa a função diretamente.
   }
 }
