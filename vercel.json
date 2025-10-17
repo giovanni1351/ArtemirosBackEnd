@@ -1,15 +1,7 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "src/artemiros/app.py",
-      "use": "@vercel/python"
+  "functions": {
+    "src/artemiros/**": {
+      "excludeFiles": "{.next,.git,node_modules}/**"
     }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "src/artemiros/app.py"
-    }
-  ]
+  }
 }
