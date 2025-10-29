@@ -18,7 +18,7 @@ def custom_openapi() -> dict[str, Any]:
         title="Artemiro BACKEND",
         version="0.0.5",
         summary="Sistema de monitoramento dos jogadores",
-        description="O acesso desta api é para jogadores",
+        description="O acesso desta api eh para jogadores",
         routes=app.routes,
     )
     app.openapi_schema = openapi_schema

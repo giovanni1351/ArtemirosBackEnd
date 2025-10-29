@@ -15,6 +15,7 @@ dependencies = [
     "pydantic-settings>=2.11.0",
     "pyjwt>=2.10.1",
     "python-multipart>=0.0.20",
+    "scriptmerge>=3.1.0",
     "sqlmodel>=0.0.27",
     "tzdata>=2025.2",
     "uvicorn>=0.37.0",
@@ -38,7 +39,7 @@ executionEnvironments = [{ root = "src/artemiros" }]
 
 [tool.ruff]
 line-length = 88
-target-version = "py313"
+target-version = "py312"
 fix = true
 show-fixes = true
 indent-width = 4
