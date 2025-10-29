@@ -2,6 +2,7 @@ from typing import Annotated
 from urllib.parse import quote_plus
 
 from fastapi import Depends
+from sqlalchemy import NullPool
 from settings import LOGGER, SETTINGS
 from sqlalchemy.ext.asyncio import AsyncEngine, create_async_engine
 from sqlmodel.ext.asyncio.session import AsyncSession
@@ -17,7 +18,14 @@ def generate_connection_string() -> str:
 
 
 async_engine: AsyncEngine = create_async_engine(
-    generate_connection_string(), pool_recycle=30
+    generate_connection_string(), pool_recycle=30,
+    poolclass=NullPool,  # Para ambientes serverless
+    connect_args={
+        # Desabilita JIT do PostgreSQL para melhor performance em serverless
+        "server_settings": {"jit": "off"},
+        "command_timeout": 60,
+        "timeout": 30,
+    } if SETTINGS.SQLITE_DEV == 0 else {}
 )
 
 
